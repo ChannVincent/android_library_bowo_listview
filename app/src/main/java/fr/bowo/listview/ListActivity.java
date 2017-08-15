@@ -26,6 +26,9 @@ public class ListActivity extends AppCompatActivity implements BOWOListListener 
      */
     protected BOWOListView listView;
 
+    /*
+    Life cycle
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
