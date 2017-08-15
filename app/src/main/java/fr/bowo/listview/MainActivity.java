@@ -19,7 +19,7 @@ import fr.bowo.bowolistview.BOWODataView;
 import fr.bowo.bowolistview.BOWOListListener;
 import fr.bowo.bowolistview.BOWOListView;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements BOWOListListener {
 
     /*
     Attributes
@@ -36,40 +36,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (BOWOListView) findViewById(R.id.list_view);
-        listView.start(getDataViewList(), new LinearLayoutManager(this, OrientationHelper.VERTICAL, false), new BOWOListListener() {
+        listView.start(getDataViewList(), new LinearLayoutManager(this, OrientationHelper.VERTICAL, false), this);
+    }
 
-            @Override
-            public void onBindViewHolder(View itemView, final BOWODataView dataView) {
-                TextView cellTitle = (TextView) itemView.findViewById(R.id.cell_title);
-                if (cellTitle != null) {
-                    cellTitle.setText(dataView.getTitle());
+    @Override
+    public void onBindViewHolder(View itemView, final BOWODataView dataView) {
+        TextView cellTitle = (TextView) itemView.findViewById(R.id.cell_title);
+        Button cellButton = (Button) itemView.findViewById(R.id.cell_button);
+
+        if (cellTitle != null) {
+            cellTitle.setText(dataView.getTitle());
+        }
+
+        if (cellButton != null) {
+            cellButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    switch (dataView.getId()) {
+                        case LIST_VIEW_BUTTON_IDX:
+                            Intent intentList = new Intent(MainActivity.this, ListActivity.class);
+                            startActivity(intentList);
+                            break;
+
+                        case GRID_VIEW_BUTTON_IDX:
+                            Intent intentGrid = new Intent(MainActivity.this, GridActivity.class);
+                            startActivity(intentGrid);
+                            break;
+
+                        default:
+                            Toast.makeText(MainActivity.this, "No activity associated with this button", Toast.LENGTH_LONG).show();
+                    }
                 }
-
-                Button cellButton = (Button) itemView.findViewById(R.id.cell_button);
-                if (cellButton != null) {
-                    cellButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            switch (dataView.getId()) {
-                                case LIST_VIEW_BUTTON_IDX:
-                                    Intent intentList = new Intent(MainActivity.this, ListActivity.class);
-                                    startActivity(intentList);
-                                    break;
-
-                                case GRID_VIEW_BUTTON_IDX:
-                                    Intent intentGrid = new Intent(MainActivity.this, GridActivity.class);
-                                    startActivity(intentGrid);
-                                    break;
-
-                                default:
-                                    Toast.makeText(MainActivity.this, "No activity associated with this button", Toast.LENGTH_LONG).show();
-                            }
-                        }
-                    });
-                }
-            }
-
-        });
+            });
+        }
     }
 
     /*
