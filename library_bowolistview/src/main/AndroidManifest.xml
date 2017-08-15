@@ -2,7 +2,6 @@
           package="fr.bowo.bowolistview">
 
     <application android:allowBackup="true"
-                 android:label="BOWOListView"
                  android:supportsRtl="true">
 
     </application>

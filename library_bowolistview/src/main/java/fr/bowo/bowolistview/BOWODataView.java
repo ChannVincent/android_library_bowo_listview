@@ -41,8 +41,9 @@ public class BOWODataView {
     /*
     Facilitator
      */
-    public void setInt(String key, int value) {
+    public BOWODataView setInt(String key, int value) {
         set(key, value);
+        return this;
     }
 
     public int getInt(String key) {
@@ -53,8 +54,9 @@ public class BOWODataView {
         return 0;
     }
 
-    public void setString(String key, String value) {
+    public BOWODataView setString(String key, String value) {
         set(key, value);
+        return this;
     }
 
     public String getString(String key) {
@@ -65,8 +67,9 @@ public class BOWODataView {
         return null;
     }
 
-    public void setBoolean(String key, boolean value) {
+    public BOWODataView setBoolean(String key, boolean value) {
         set(key, value);
+        return this;
     }
 
     public boolean getBoolean(String key) {
@@ -80,48 +83,54 @@ public class BOWODataView {
     /*
     Common methods
      */
-    public void setId(int idx) {
+    public BOWODataView setId(int idx) {
         setInt(COMMON_KEY_IDX, idx);
+        return this;
     }
 
     public int getId() {
         return getInt(COMMON_KEY_IDX);
     }
 
-    public void setTitle(String title) {
+    public BOWODataView setTitle(String title) {
         setString(COMMON_KEY_TITLE, title);
+        return this;
     }
 
     public String getTitle() {
         return getString(COMMON_KEY_TITLE);
     }
 
-    public void setSubtitle(String subtitle) {
+    public BOWODataView setSubtitle(String subtitle) {
         setString(COMMON_KEY_SUBTITLE, subtitle);
+        return this;
     }
 
     public String getSubtitle() {
         return getString(COMMON_KEY_SUBTITLE);
     }
 
-    public void setText(String text) {
+    public BOWODataView setText(String text) {
         setString(COMMON_KEY_TEXT, text);
+        return this;
     }
 
     public String getText() {
         return getString(COMMON_KEY_TEXT);
     }
 
-    public void setImage(String image) {
+    public BOWODataView setImage(String image) {
         setString(COMMON_KEY_IMAGE, image);
+        return this;
     }
 
     public String getImage() {
         return getString(COMMON_KEY_IMAGE);
     }
 
-    public void setIcon(String icon) {
+    public BOWODataView setIcon(String icon) {
         setString(COMMON_KEY_ICON, icon);
+        return this;
     }
 
     public String getIcon() {
