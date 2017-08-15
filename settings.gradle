@@ -1,1 +1,1 @@
-include ':app', ':bowolistview'
+include ':app', ':library_bowolistview'
