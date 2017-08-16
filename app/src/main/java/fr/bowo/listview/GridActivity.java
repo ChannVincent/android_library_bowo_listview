@@ -41,7 +41,6 @@ public class GridActivity extends AppCompatActivity implements BOWOListListener 
     @Override
     public void onBindViewHolder(View itemView, BOWODataView dataView) {
         ImageView cellImage = (ImageView) itemView.findViewById(R.id.cell_image);
-
         if (cellImage != null) {
             Glide.with(this)
                     .load("file:///android_asset/" + dataView.getImage())

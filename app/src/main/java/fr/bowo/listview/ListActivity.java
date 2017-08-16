@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,17 +44,16 @@ public class ListActivity extends AppCompatActivity implements BOWOListListener 
         TextView cellTitle = (TextView) itemView.findViewById(R.id.cell_title);
         TextView cellSubtitle = (TextView) itemView.findViewById(R.id.cell_subtitle);
         ImageView cellImage = (ImageView) itemView.findViewById(R.id.cell_image);
-
         if (cellTitle != null) {
             cellTitle.setText(dataView.getTitle());
         }
-
         if (cellSubtitle != null) {
             cellSubtitle.setText(dataView.getSubtitle());
         }
-
         if (cellImage != null) {
-
+            Glide.with(this)
+                    .load("file:///android_asset/" + dataView.getImage())
+                    .into(cellImage);
         }
     }
 
@@ -61,9 +62,9 @@ public class ListActivity extends AppCompatActivity implements BOWOListListener 
      */
     protected List<BOWODataView> getDataViewList() {
         List<BOWODataView> result = new ArrayList<>();
-        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 1").setSubtitle("Subtitle 1"));
-        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 2").setSubtitle("Subtitle 2"));
-        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 3").setSubtitle("Subtitle 3"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 1").setSubtitle("Subtitle 1").setImage("carapuce.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 2").setSubtitle("Subtitle 2").setImage("evoli.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 3").setSubtitle("Subtitle 3").setImage("pikachu.png"));
         return result;
     }
 
