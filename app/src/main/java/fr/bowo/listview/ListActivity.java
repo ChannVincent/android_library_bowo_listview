@@ -36,7 +36,7 @@ public class ListActivity extends AppCompatActivity implements BOWOListListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
         listView = (BOWOListView) findViewById(R.id.list_view);
-        listView.start(getDataViewList(), new LinearLayoutManager(this, OrientationHelper.VERTICAL, false), this);
+        listView.start(getDataViewList(), getLinearLayoutManager(), this);
     }
 
     @Override
@@ -68,4 +68,7 @@ public class ListActivity extends AppCompatActivity implements BOWOListListener 
         return result;
     }
 
+    protected LinearLayoutManager getLinearLayoutManager() {
+        return new LinearLayoutManager(this, OrientationHelper.VERTICAL, false);
+    }
 }

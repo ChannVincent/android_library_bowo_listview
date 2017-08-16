@@ -1,12 +1,10 @@
 package fr.bowo.listview;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -27,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements BOWOListListener 
     protected BOWOListView listView;
     protected final int LIST_VIEW_BUTTON_IDX = 1;
     protected final int GRID_VIEW_BUTTON_IDX = 2;
+    protected final int STAGGERED_GRID_VIEW_BUTTON_IDX = 3;
 
     /*
     Life cycle
@@ -63,6 +62,11 @@ public class MainActivity extends AppCompatActivity implements BOWOListListener 
                             startActivity(intentGrid);
                             break;
 
+                        case STAGGERED_GRID_VIEW_BUTTON_IDX:
+                            Intent intentStaggeredGrid = new Intent(MainActivity.this, StaggeredGridActivity.class);
+                            startActivity(intentStaggeredGrid);
+                            break;
+
                         default:
                             Toast.makeText(MainActivity.this, "No activity associated with this button", Toast.LENGTH_LONG).show();
                     }
@@ -78,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements BOWOListListener 
         List<BOWODataView> result = new ArrayList<>();
         result.add(new BOWODataView(R.layout.cell_main).setTitle("ListView Demo").setId(LIST_VIEW_BUTTON_IDX));
         result.add(new BOWODataView(R.layout.cell_main).setTitle("GridView Demo").setId(GRID_VIEW_BUTTON_IDX));
+        result.add(new BOWODataView(R.layout.cell_main).setTitle("StaggeredGridView Demo").setId(STAGGERED_GRID_VIEW_BUTTON_IDX));
         return result;
     }
 }
