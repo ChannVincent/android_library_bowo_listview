@@ -24,3 +24,41 @@ android {
 dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.1'
 }
+
+///////////////////////////////////
+////       BINTRAY UPLOAD      ////
+///////////////////////////////////
+
+//////////////////////////////////////////
+////                                  ////
+////         Pour uploader :          ////
+////                                  ////
+////     ./gradlew bintrayUpload      ////
+////                                  ////
+//////////////////////////////////////////
+
+ext {
+    bintrayRepo = bintrayrepo
+    bintrayName = bintrayname
+
+    publishedGroupId = publishedgroupid
+    libraryName = libraryname
+    artifact = 'library_bowolistview'
+
+    libraryDescription = librarydescription
+
+    siteUrl = siteurl
+    gitUrl = giturl
+
+    libraryVersion = projectversion
+
+    developerId = developerid
+    developerName = developername
+    developerEmail = developeremail
+
+    licenseName = licensename
+    licenseUrl = licenseurl
+    allLicenses = alllicenses
+}
+
+apply from: '../maven.gradle'
