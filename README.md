@@ -7,12 +7,12 @@
 allprojects {
   repositories {
     jcenter()
-    maven { url 'https://'}
+    maven { url 'https://dl.bintray.com/vincentchann/maven-repositories/'}
   }
 }
 
 // module gradle
-compile 'fr.bowo.library'
+compile 'fr.bowo.bowolistview:library_bowolistview:1.0.0'
 ```
 
 # Documentation
