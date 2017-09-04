@@ -1,5 +1,9 @@
 # BOWO ListView
 
+## Demo 
+
+![](/demo.gif) 
+
 ## Integration
 
 ```javascript
