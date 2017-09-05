@@ -81,7 +81,7 @@ String valueInteger = dataView.getInteger(KEY_INTEGER);
 // And for really generic purpose
 final String KEY_OBJECT = "key_object";
 BOWODataView dataView = new BOWODataView(R.layout.cell_default).set(KEY_OBJECT, new Object());
-Object object = dataView.getObject();
+Object object = dataView.getObject(KEY_OBJECT);
 ```
 
 # Tutorial
