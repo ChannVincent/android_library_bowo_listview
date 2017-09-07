@@ -30,11 +30,12 @@ public class BOWODataView {
     /*
     Main functions
      */
-    public void set(String key, Object value) {
+    public BOWODataView setObject(String key, Object value) {
         datas.put(key, value);
+        return this;
     }
 
-    public Object get(String key) {
+    public Object getObject(String key) {
         return datas.get(key);
     }
 
@@ -42,12 +43,12 @@ public class BOWODataView {
     Facilitator
      */
     public BOWODataView setInt(String key, int value) {
-        set(key, value);
+        setObject(key, value);
         return this;
     }
 
     public int getInt(String key) {
-        Object result = get(key);
+        Object result = getObject(key);
         if (result instanceof Integer) {
             return (Integer) result;
         }
@@ -55,12 +56,12 @@ public class BOWODataView {
     }
 
     public BOWODataView setString(String key, String value) {
-        set(key, value);
+        setObject(key, value);
         return this;
     }
 
     public String getString(String key) {
-        Object result = get(key);
+        Object result = getObject(key);
         if (result instanceof String) {
             return (String) result;
         }
@@ -68,12 +69,12 @@ public class BOWODataView {
     }
 
     public BOWODataView setBoolean(String key, boolean value) {
-        set(key, value);
+        setObject(key, value);
         return this;
     }
 
     public boolean getBoolean(String key) {
-        Object result = get(key);
+        Object result = getObject(key);
         if (result instanceof Boolean) {
             return (Boolean) result;
         }
