@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements BOWOListListener 
     protected final int LIST_VIEW_BUTTON_IDX = 1;
     protected final int GRID_VIEW_BUTTON_IDX = 2;
     protected final int STAGGERED_GRID_VIEW_BUTTON_IDX = 3;
+    protected final int SWIPE_RECYCLER_VIEW_IDX = 4;
 
     /*
     Life cycle
@@ -67,6 +68,10 @@ public class MainActivity extends AppCompatActivity implements BOWOListListener 
                             startActivity(intentStaggeredGrid);
                             break;
 
+                        case SWIPE_RECYCLER_VIEW_IDX:
+                            Intent intentSwipeRecycler = new Intent(MainActivity.this, SwipeActivity.class);
+                            startActivity(intentSwipeRecycler);
+                            break;
                         default:
                             Toast.makeText(MainActivity.this, "No activity associated with this button", Toast.LENGTH_LONG).show();
                     }
@@ -83,6 +88,8 @@ public class MainActivity extends AppCompatActivity implements BOWOListListener 
         result.add(new BOWODataView(R.layout.cell_main).setTitle("ListView Demo").setId(LIST_VIEW_BUTTON_IDX));
         result.add(new BOWODataView(R.layout.cell_main).setTitle("GridView Demo").setId(GRID_VIEW_BUTTON_IDX));
         result.add(new BOWODataView(R.layout.cell_main).setTitle("StaggeredGridView Demo").setId(STAGGERED_GRID_VIEW_BUTTON_IDX));
+        result.add(new BOWODataView(R.layout.cell_main).setTitle("SwipeRecycler Demo").setId(SWIPE_RECYCLER_VIEW_IDX));
+
         return result;
     }
 }

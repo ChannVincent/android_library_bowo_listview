@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fr.bowo.bowolistview.BOWOSwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:dragEdge="left"
+    app:mode="same_level">
+
+    <RelativeLayout
+        android:id="@+id/delete_button"
+        android:layout_width="133dp"
+        android:layout_height="match_parent"
+        android:background="#ff0000">
+
+        <ImageView
+            android:id="@+id/icon_delete"
+            android:layout_width="22dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@android:color/holo_blue_light">
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@android:color/white"/>
+    </FrameLayout>
+
+</fr.bowo.bowolistview.BOWOSwipeLayout>
