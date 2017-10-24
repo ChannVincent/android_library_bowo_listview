@@ -186,7 +186,7 @@ public class BOWOSwipeLayout extends ViewGroup {
         super.onFinishInflate();
 
         // get views
-        if (getChildCount() == 2) {
+        if (getChildCount() == 2 && getChildAt(0).getVisibility() == VISIBLE && getChildAt(1).getVisibility() == VISIBLE) {
             mSecondaryView = getChildAt(0);
             mMainView = getChildAt(1);
         }
