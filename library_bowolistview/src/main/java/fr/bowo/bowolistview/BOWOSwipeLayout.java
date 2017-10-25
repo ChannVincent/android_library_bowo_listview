@@ -29,6 +29,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Rect;
+import android.support.annotation.Nullable;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
@@ -49,7 +50,7 @@ public class BOWOSwipeLayout extends ViewGroup {
     protected static final int STATE_DRAGGING  = 4;//Glisser
 
     private static final int DEFAULT_MIN_FLING_VELOCITY = 300; // dp per second
-    private static final int DEFAULT_MIN_DIST_REQUEST_DISALLOW_PARENT = 1; // dp
+    private static final int DEFAULT_MIN_DIST_REQUEST_DISALLOW_PARENT = 0; // dp
 
     public static final int DRAG_EDGE_LEFT =   0x1;
     public static final int DRAG_EDGE_RIGHT =  0x1 << 1;//TODO voir pk ce nombre c important
@@ -193,7 +194,7 @@ public class BOWOSwipeLayout extends ViewGroup {
         else if (getChildCount() == 1) {
             mMainView = getChildAt(0);
         }
-        else if (getChildCount() > 2) {
+        else if (getChildCount() >= 2) {
             mMainView = getChildAt(0);
         }
     }
