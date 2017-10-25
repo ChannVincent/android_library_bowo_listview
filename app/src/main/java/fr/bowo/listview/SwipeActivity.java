@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -54,6 +57,54 @@ public class SwipeActivity extends AppCompatActivity implements BOWOListListener
                 public void onClick(View v) {
                     ((BOWOSwipeLayout) itemView).close(true);
                 }
+            });
+/*            BOWOSwipeLayout swipe = (BOWOSwipeLayout) itemView.findViewById(R.id.plop);
+            if (swipe != null) {
+                swipe.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Log.e("plop", "plop");
+                    }
+                });
+                swipe.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View v) {
+                        Log.e("plop", "plop");
+                        return true;
+                    }
+                });
+            }*/
+            itemView.setOnTouchListener(new View.OnTouchListener() {
+                private int CLICK_ACTION_THRESHOLD = 200;
+                private float startX;
+                private float startY;
+
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            startX = event.getX();
+                            startY = event.getY();
+                            Log.e("down", "down");
+
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            float endX = event.getX();
+                            float endY = event.getY();
+                            if (isAClick(startX, endX, startY, endY)) {
+                                Log.e("click", "click");
+                            }
+                            break;
+                    }
+                    return false; //specific to my project
+                }
+
+                private boolean isAClick(float startX, float endX, float startY, float endY) {
+                    float differenceX = Math.abs(startX - endX);
+                    float differenceY = Math.abs(startY - endY);
+                    return !(differenceX > CLICK_ACTION_THRESHOLD/* =5 */ || differenceY > CLICK_ACTION_THRESHOLD);
+                }
+
             });
         }
     }
