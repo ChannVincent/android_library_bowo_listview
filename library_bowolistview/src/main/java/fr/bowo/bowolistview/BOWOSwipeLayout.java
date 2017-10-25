@@ -260,7 +260,7 @@ public class BOWOSwipeLayout extends ViewGroup {
 
             child.layout(left, top, right, bottom);
         }
-        if (mSecondaryView == null || isSwipeable == false) {
+        if (mSecondaryView == null) {
             return;
         }
         // taking account offset when mode is SAME_LEVEL
@@ -425,7 +425,7 @@ public class BOWOSwipeLayout extends ViewGroup {
     public void close(boolean animation) {
         isOpen = false;
         mAborted = false;
-        if (mSecondaryView == null || isSwipeable == false) {
+        if (mSecondaryView == null) {
             return;
         }
 
@@ -628,7 +628,7 @@ public class BOWOSwipeLayout extends ViewGroup {
     };
 
     private int getDistToClosestEdge() {
-        if (mSecondaryView == null || isSwipeable == false) {
+        if (mSecondaryView == null) {
             return 0;
         }
         switch (mDragEdge) {
@@ -652,7 +652,7 @@ public class BOWOSwipeLayout extends ViewGroup {
     }
 
     private int getHalfwayPivotHorizontal() {
-        if (mSecondaryView == null || isSwipeable == false) {
+        if (mSecondaryView == null) {
             return mRectMainClose.right;
         }
         if (mDragEdge == DRAG_EDGE_LEFT) {
@@ -684,7 +684,7 @@ public class BOWOSwipeLayout extends ViewGroup {
 
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
-            if (mSecondaryView == null || isSwipeable == false) {
+            if (mSecondaryView == null) {
                 return child.getLeft();
             }
             switch (mDragEdge) {
