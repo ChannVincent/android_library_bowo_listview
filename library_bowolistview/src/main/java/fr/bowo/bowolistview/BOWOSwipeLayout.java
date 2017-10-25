@@ -425,7 +425,7 @@ public class BOWOSwipeLayout extends ViewGroup {
     public void close(boolean animation) {
         isOpen = false;
         mAborted = false;
-        if (mSecondaryView == null) {
+        if (mSecondaryView == null || isSwipeable == false) {
             return;
         }
 
@@ -628,7 +628,7 @@ public class BOWOSwipeLayout extends ViewGroup {
     };
 
     private int getDistToClosestEdge() {
-        if (mSecondaryView == null) {
+        if (mSecondaryView == null || isSwipeable == false) {
             return 0;
         }
         switch (mDragEdge) {
@@ -652,7 +652,7 @@ public class BOWOSwipeLayout extends ViewGroup {
     }
 
     private int getHalfwayPivotHorizontal() {
-        if (mSecondaryView == null) {
+        if (mSecondaryView == null || isSwipeable == false) {
             return mRectMainClose.right;
         }
         if (mDragEdge == DRAG_EDGE_LEFT) {
@@ -684,7 +684,7 @@ public class BOWOSwipeLayout extends ViewGroup {
 
         @Override
         public int clampViewPositionHorizontal(View child, int left, int dx) {
-            if (mSecondaryView == null) {
+            if (mSecondaryView == null || isSwipeable == false) {
                 return child.getLeft();
             }
             switch (mDragEdge) {
@@ -758,7 +758,7 @@ public class BOWOSwipeLayout extends ViewGroup {
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
             super.onViewPositionChanged(changedView, left, top, dx, dy);
-            if (mSecondaryView == null || isSwipeable == false) {
+            if (mSecondaryView == null) {
                 return;
             }
             if (mMode == MODE_SAME_LEVEL) {

@@ -52,28 +52,15 @@ public class SwipeActivity extends AppCompatActivity implements BOWOListListener
         }
         if (dataView.getId() == 1 || dataView.getId() == 3) {
             RelativeLayout button = (RelativeLayout) itemView.findViewById(R.id.delete_button);
+            ((BOWOSwipeLayout) itemView).setSwipeable(false);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ((BOWOSwipeLayout) itemView).close(true);
+                    ((BOWOSwipeLayout) itemView).setSwipeable(false);
+
                 }
             });
-/*            BOWOSwipeLayout swipe = (BOWOSwipeLayout) itemView.findViewById(R.id.plop);
-            if (swipe != null) {
-                swipe.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Log.e("plop", "plop");
-                    }
-                });
-                swipe.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View v) {
-                        Log.e("plop", "plop");
-                        return true;
-                    }
-                });
-            }*/
             itemView.setOnTouchListener(new View.OnTouchListener() {
                 private int CLICK_ACTION_THRESHOLD = 200;
                 private float startX;
@@ -93,6 +80,8 @@ public class SwipeActivity extends AppCompatActivity implements BOWOListListener
                             float endY = event.getY();
                             if (isAClick(startX, endX, startY, endY)) {
                                 Log.e("click", "click");
+                                ((BOWOSwipeLayout) itemView).setSwipeable(true);
+
                             }
                             break;
                     }
