@@ -20,9 +20,6 @@ import java.util.List;
 import fr.bowo.bowolistview.BOWODataView;
 import fr.bowo.bowolistview.BOWOListListener;
 import fr.bowo.bowolistview.BOWOListView;
-import jp.wasabeef.recyclerview.animators.LandingAnimator;
-import jp.wasabeef.recyclerview.animators.ScaleInLeftAnimator;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
 /**
  * Created by bbrunell on 20/10/2017.
