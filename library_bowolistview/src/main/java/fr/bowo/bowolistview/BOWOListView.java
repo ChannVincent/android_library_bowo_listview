@@ -17,7 +17,6 @@ public class BOWOListView extends RecyclerView {
      */
     protected Context context;
     protected BOWOAdapter bowoAdapter;
-
     /*
     Constructor
      */
@@ -40,16 +39,25 @@ public class BOWOListView extends RecyclerView {
     Public methods
      */
     public void start(List<BOWODataView> dataViewList, LayoutManager layoutManager, BOWOListListener bowoListListener) {
+        setLayoutManager(layoutManager);
         this.bowoAdapter = new BOWOAdapter(context, dataViewList, bowoListListener);
+
         setAdapter(this.bowoAdapter);
         setHasFixedSize(true);
-        setLayoutManager(layoutManager);
     }
 
     public void reloadData(List<BOWODataView> dataViewList) {
         if (this.bowoAdapter != null) {
             this.bowoAdapter.reloadData(dataViewList);
         }
+    }
+
+    public void addItems(int startPosition, List<BOWODataView> dataViewList) {
+        bowoAdapter.addItems(startPosition, dataViewList);
+    }
+
+    public void removeItems(int position, int itemCount) {
+        bowoAdapter.removeItems(position, itemCount);
     }
 
     /*
