@@ -13,18 +13,4 @@
     android:gravity="center_vertical"
     tools:text="Artist Name" />
 
-  <Button
-      android:id="@+id/add"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:gravity="center_vertical"
-      tools:text="Add below" />
-
-  <Button
-      android:id="@+id/remove"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:gravity="center_vertical"
-      tools:text="Remove below" />
-
 </LinearLayout>

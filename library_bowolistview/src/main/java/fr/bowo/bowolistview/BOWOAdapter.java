@@ -2,6 +2,7 @@ package fr.bowo.bowolistview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import java.util.List;
@@ -19,6 +20,7 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
     protected List<BOWODataView> dataViewList;
     protected Context context;
     int position;
+
     /*
     Constructor
      */
@@ -28,14 +30,16 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
         this.bowoListListener = bowoListListener;
     }
 
+
     /*
     Life Cycle
      */
+
     @Override
     public BOWOViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (dataViewList != null) {
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-            return new BOWOViewHolder(inflater.inflate(dataViewList.get(this.position).resourceViewIdx, parent, false));
+            return new BOWOViewHolder(inflater.inflate(dataViewList.get(position).resourceViewIdx, parent, false));
         }
         else {
             return null;
@@ -52,7 +56,7 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
     @Override
     public int getItemViewType(int position) {
         this.position = position;
-        return super.getItemViewType(position);
+        return dataViewList.get(position).resourceViewIdx;
     }
 
     @Override
@@ -85,7 +89,6 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
         }
         notifyItemRangeRemoved(position, removeCount);
     }
-
 
     public void addItems(int startPosition, List<BOWODataView> dataChildViewList) {
         if (startPosition > dataViewList.size()) {
