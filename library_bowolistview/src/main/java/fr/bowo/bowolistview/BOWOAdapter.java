@@ -75,7 +75,7 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
      */
     public void reloadData(List<BOWODataView> dataViews) {
         this.dataViewList = dataViews;
-        //notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     public void removeItems(int position, int itemCount) {
