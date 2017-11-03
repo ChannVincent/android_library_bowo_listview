@@ -8,7 +8,7 @@
 
 ```javascript
 // module gradle
-compile 'fr.bowo.bowolistview:library_bowolistview:1.0.1'
+compile 'fr.bowo.bowolistview:library_bowolistview:1.0.10'
 ```
 
 # Documentation
@@ -537,3 +537,13 @@ public class MainActivity extends AppCompatActivity implements BOWOListListener 
 
 </LinearLayout>
 ```
+
+### Methods
+
+For remove items
+
+public void removeItems(int position, int itemCount);
+
+For add items
+
+public void addItems(int startPosition, List<BOWODataView> dataChildViewList);
