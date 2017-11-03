@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.ViewGroup;
+
 import java.util.List;
 
 /**
@@ -41,9 +43,7 @@ public class BOWOListView extends RecyclerView {
     public void start(List<BOWODataView> dataViewList, LayoutManager layoutManager, BOWOListListener bowoListListener) {
         setLayoutManager(layoutManager);
         this.bowoAdapter = new BOWOAdapter(context, dataViewList, bowoListListener);
-
         setAdapter(this.bowoAdapter);
-        setHasFixedSize(true);
     }
 
     public void reloadData(List<BOWODataView> dataViewList) {
