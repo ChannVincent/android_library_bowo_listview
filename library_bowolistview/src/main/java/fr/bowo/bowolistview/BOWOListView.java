@@ -60,6 +60,10 @@ public class BOWOListView extends RecyclerView {
         bowoAdapter.removeItems(position, itemCount);
     }
 
+    public BOWOAdapter getAdapter() {
+        return bowoAdapter;
+    }
+
     /*
     Private methods
      */
