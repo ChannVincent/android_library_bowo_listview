@@ -2,6 +2,8 @@ package fr.bowo.bowolistview;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
@@ -19,6 +21,8 @@ public class BOWOListView extends RecyclerView {
      */
     protected Context context;
     protected BOWOAdapter bowoAdapter;
+    protected LayoutManager layoutManager;
+
     /*
     Constructor
      */
@@ -41,6 +45,7 @@ public class BOWOListView extends RecyclerView {
     Public methods
      */
     public void start(List<BOWODataView> dataViewList, LayoutManager layoutManager, BOWOListListener bowoListListener) {
+        this.layoutManager = layoutManager;
         setLayoutManager(layoutManager);
         this.bowoAdapter = new BOWOAdapter(context, dataViewList, bowoListListener);
         setAdapter(this.bowoAdapter);
@@ -48,7 +53,17 @@ public class BOWOListView extends RecyclerView {
 
     public void reloadData(List<BOWODataView> dataViewList) {
         if (this.bowoAdapter != null) {
+            int offset = this.computeVerticalScrollOffset();
             this.bowoAdapter.reloadData(dataViewList);
+            if (layoutManager instanceof GridLayoutManager) {
+                ((GridLayoutManager) layoutManager).scrollToPositionWithOffset(0, -offset);
+            }
+            else if (layoutManager instanceof LinearLayoutManager) {
+                ((LinearLayoutManager) layoutManager).scrollToPositionWithOffset(0, -offset);
+            }
+            else {
+                // TODO
+            }
         }
     }
 
