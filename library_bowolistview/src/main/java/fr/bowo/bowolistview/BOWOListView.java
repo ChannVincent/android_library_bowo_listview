@@ -51,6 +51,13 @@ public class BOWOListView extends RecyclerView {
         setAdapter(this.bowoAdapter);
     }
 
+    public void start(List<BOWODataView> dataViewList, LayoutManager layoutManager, BOWOListListener bowoListListener, BOWOListOnClickListener bowoListOnClickListener) {
+        this.layoutManager = layoutManager;
+        setLayoutManager(layoutManager);
+        this.bowoAdapter = new BOWOAdapter(context, dataViewList, bowoListListener, bowoListOnClickListener);
+        setAdapter(this.bowoAdapter);
+    }
+
     public void reloadData(List<BOWODataView> dataViewList) {
         if (this.bowoAdapter != null) {
             int offset = this.computeVerticalScrollOffset();
