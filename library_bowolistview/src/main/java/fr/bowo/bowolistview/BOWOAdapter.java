@@ -16,6 +16,7 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
     /*
     Attributes
      */
+    protected BOWOListOnClickListener bowoListOnClickListener;
     protected BOWOListListener bowoListListener;
     protected List<BOWODataView> dataViewList;
     protected Context context;
@@ -30,6 +31,13 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
         this.bowoListListener = bowoListListener;
     }
 
+    public BOWOAdapter(Context context, List<BOWODataView> dataViewList, BOWOListListener bowoListListener,
+                       BOWOListOnClickListener bowoListOnClickListener) {
+        this.context = context;
+        this.dataViewList = dataViewList;
+        this.bowoListListener = bowoListListener;
+        this.bowoListOnClickListener = bowoListOnClickListener;
+    }
 
     /*
     Life Cycle
@@ -50,6 +58,10 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
     public void onBindViewHolder(BOWOViewHolder holder, int position) {
         if (bowoListListener != null && dataViewList != null) {
             bowoListListener.onBindViewHolder(holder.itemView, dataViewList.get(position));
+        }
+
+        if (bowoListOnClickListener != null) {
+            bowoListOnClickListener.onClick(position);
         }
     }
 
