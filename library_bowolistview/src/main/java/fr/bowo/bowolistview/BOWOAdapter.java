@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import java.util.List;
 
@@ -55,13 +56,18 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(BOWOViewHolder holder, int position) {
+    public void onBindViewHolder(final BOWOViewHolder holder, final int position) {
         if (bowoListListener != null && dataViewList != null) {
             bowoListListener.onBindViewHolder(holder.itemView, dataViewList.get(position));
         }
 
         if (bowoListOnClickListener != null) {
-            bowoListOnClickListener.onClick(position);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    bowoListOnClickListener.onClick(holder.getAdapterPosition());
+                }
+            });
         }
     }
 
