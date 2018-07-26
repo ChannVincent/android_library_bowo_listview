@@ -6,9 +6,12 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
 
 import java.util.List;
+
+import fr.bowo.bowolistview.animationtools.AlphaInAnimationAdapter;
+import fr.bowo.bowolistview.animationtools.FadeInAnimator;
 
 /**
  * Created by vincentchann on 15/08/2017.
@@ -55,7 +58,14 @@ public class BOWOListView extends RecyclerView {
         this.layoutManager = layoutManager;
         setLayoutManager(layoutManager);
         this.bowoAdapter = new BOWOAdapter(context, dataViewList, bowoListListener, bowoListOnClickListener);
-        setAdapter(this.bowoAdapter);
+        //setAdapter(this.bowoAdapter);
+
+        this.setItemAnimator(new FadeInAnimator());
+        AlphaInAnimationAdapter alphaAdapter = new AlphaInAnimationAdapter(bowoAdapter);
+        alphaAdapter.setFirstOnly(true);
+        alphaAdapter.setDuration(500);
+        alphaAdapter.setInterpolator(new OvershootInterpolator(.5f));
+        setAdapter(alphaAdapter);
     }
 
     public void reloadData(List<BOWODataView> dataViewList) {

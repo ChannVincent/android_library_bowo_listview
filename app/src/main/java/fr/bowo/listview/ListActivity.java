@@ -37,6 +37,20 @@ public class ListActivity extends AppCompatActivity implements BOWOListListener 
         setContentView(R.layout.activity_list);
         listView = (BOWOListView) findViewById(R.id.list_view);
         listView.start(getDataViewList(), getLinearLayoutManager(), this);
+
+        findViewById(R.id.add_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listView.addItems(3, getDataViewSmallList());
+            }
+        });
+
+        findViewById(R.id.remove_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listView.removeItems(4, listView.getChildCount() - 5);
+            }
+        });
     }
 
     @Override
@@ -61,6 +75,19 @@ public class ListActivity extends AppCompatActivity implements BOWOListListener 
     Private methods
      */
     protected List<BOWODataView> getDataViewList() {
+        List<BOWODataView> result = new ArrayList<>();
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 1").setSubtitle("Subtitle 1").setImage("carapuce.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 2").setSubtitle("Subtitle 2").setImage("evoli.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 3").setSubtitle("Subtitle 3").setImage("pikachu.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 4").setSubtitle("Subtitle 3").setImage("pikachu.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 5").setSubtitle("Subtitle 3").setImage("pikachu.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 6").setSubtitle("Subtitle 3").setImage("pikachu.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 7").setSubtitle("Subtitle 3").setImage("pikachu.png"));
+        result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 8").setSubtitle("Subtitle 3").setImage("pikachu.png"));
+        return result;
+    }
+
+    protected List<BOWODataView> getDataViewSmallList() {
         List<BOWODataView> result = new ArrayList<>();
         result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 1").setSubtitle("Subtitle 1").setImage("carapuce.png"));
         result.add(new BOWODataView(R.layout.cell_default).setTitle("Title 2").setSubtitle("Subtitle 2").setImage("evoli.png"));
