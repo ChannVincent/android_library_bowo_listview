@@ -33,8 +33,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A {@link RecyclerView.LayoutManager} which displays a regular grid (i.e. all cells are the same
- * size) and allows simultaneous row & column spanning.
+ * A which displays a regular grid (i.e. all cells are the same
+ * size) and allows simultaneous row and column spanning.
  */
 public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
 

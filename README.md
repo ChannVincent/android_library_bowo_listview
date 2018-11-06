@@ -8,7 +8,7 @@
 
 ```javascript
 // module gradle
-compile 'fr.bowo.bowolistview:library_bowolistview:1.0.14'
+compile 'fr.bowo.bowolistview:library_bowolistview:1.0.19'
 ```
 
 # Documentation
