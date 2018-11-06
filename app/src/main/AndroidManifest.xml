@@ -20,6 +20,7 @@
         <activity android:name=".StaggeredGridActivity"/>
         <activity android:name=".SwipeActivity"/>
         <activity android:name=".ExpandableActivity"/>
+        <activity android:name=".SpannedGridActivity"/>
     </application>
 
 </manifest>

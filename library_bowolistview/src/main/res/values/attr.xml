@@ -5,14 +5,18 @@
             <flag name="left" value="1" />
             <flag name="right" value="2" />
         </attr>
-
         <attr name="mode">
             <enum name="normal" value="0" />
             <enum name="same_level"   value="1" />
         </attr>
-
         <attr name="flingVelocity" format="integer" />
-
         <attr name="minDistRequestDisallowParent" format="dimension" />
     </declare-styleable>
+
+    <declare-styleable name="SpannedGridLayoutManager">
+        <attr name="android:orientation" />
+        <attr name="spanCount" />
+        <attr name="aspectRatio" format="string" />
+    </declare-styleable>
+
 </resources>
