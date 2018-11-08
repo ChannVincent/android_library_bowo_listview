@@ -173,7 +173,8 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
     public RecyclerView.LayoutParams generateLayoutParams(ViewGroup.LayoutParams lp) {
         if (lp instanceof ViewGroup.MarginLayoutParams) {
             return new LayoutParams((ViewGroup.MarginLayoutParams) lp);
-        } else {
+        }
+        else {
             return new LayoutParams(lp);
         }
     }
@@ -224,7 +225,7 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
             int lastRowTop = getDecoratedTop(
                     getChildAt(firstPositionOfLastRow - firstVisiblePosition));
             if (lastRowTop - scrolled > getHeight()) { // last spanned row scrolled out
-                recycleRow(lastVisibleRow, recycler, state);
+                // todo quick fix recycleRow(lastVisibleRow, recycler, state);
             }
         } else { // scrolling content up
             int bottom = getDecoratedBottom(getChildAt(getChildCount() - 1));
@@ -245,7 +246,7 @@ public class SpannedGridLayoutManager extends RecyclerView.LayoutManager {
             int bottomOfFirstRow =
                     getDecoratedBottom(getChildAt(lastPositionInRow - firstVisiblePosition));
             if (bottomOfFirstRow - scrolled < 0) { // first spanned row scrolled out
-                recycleRow(firstVisibleRow, recycler, state);
+                // todo quick fix recycleRow(firstVisibleRow, recycler, state);
             }
         }
         offsetChildrenVertical(-scrolled);
