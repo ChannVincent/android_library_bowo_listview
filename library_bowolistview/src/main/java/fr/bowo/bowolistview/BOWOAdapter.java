@@ -19,9 +19,9 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
      */
     protected BOWOListOnClickListener bowoListOnClickListener;
     protected BOWOListListener bowoListListener;
+    protected BOWOViewHolderListener bowoViewHolderListener;
     protected List<BOWODataView> dataViewList;
     protected Context context;
-    int position;
 
     /*
     Constructor
@@ -45,8 +45,14 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
      */
 
     @Override
-    public BOWOViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public BOWOViewHolder onCreateViewHolder(ViewGroup parent, int position) {
         if (dataViewList != null) {
+            // listener
+            if (bowoViewHolderListener != null) {
+                bowoViewHolderListener.onCreateViewHolder(position, dataViewList.get(position), parent);
+            }
+
+            // return view holder
             LayoutInflater inflater = LayoutInflater.from(parent.getContext());
             return new BOWOViewHolder(inflater.inflate(dataViewList.get(position).resourceViewIdx, parent, false));
         }
@@ -73,8 +79,7 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        this.position = position;
-        return dataViewList.get(position).resourceViewIdx;
+        return position;
     }
 
     @Override
@@ -118,6 +123,10 @@ public class BOWOAdapter extends RecyclerView.Adapter<BOWOViewHolder> {
             position++;
         }
         notifyItemRangeInserted(startPosition , dataChildViewList.size());
+    }
+
+    public  void setBowoViewHolderListener(BOWOViewHolderListener listener) {
+        this.bowoViewHolderListener = listener;
     }
 }
 
